@@ -20,16 +20,19 @@ public class User  extends  AbstractModel  implements UserDetails  {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(nullable = false )
     private String userName;
+    @Column(nullable = false , unique = true)
     private String userEmail;
+    @Column(nullable = false )
     private String password;
 
-//    @Enumerated(EnumType.STRING)
-//    private  Roles roles;
+    @Enumerated(EnumType.STRING)
+    private  Roles roles;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(Roles.USER.name()));
+        return List.of(new SimpleGrantedAuthority(roles.name()));
     }
 
     @Override
