@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.GetMapping;
+
 
 import java.util.Collection;
 import java.util.List;
@@ -24,12 +24,12 @@ public class User  extends  AbstractModel  implements UserDetails  {
     private String userEmail;
     private String password;
 
-    @Enumerated(EnumType.STRING)
-    private  Roles roles;
+//    @Enumerated(EnumType.STRING)
+//    private  Roles roles;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(roles.name()));
+        return List.of(new SimpleGrantedAuthority(Roles.USER.name()));
     }
 
     @Override

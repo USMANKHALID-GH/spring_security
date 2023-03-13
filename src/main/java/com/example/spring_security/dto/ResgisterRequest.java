@@ -7,9 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserDto  extends BaseDto{
+public class ResgisterRequest extends BaseDto{
     private String userName;
     private String userEmail;
     private String password;
+
 
 }
