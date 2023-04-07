@@ -32,6 +32,7 @@ public class SecuriyConfiguration {
                .disable()
                .authorizeHttpRequests()
                .requestMatchers("/api/v1/auth/**").permitAll()
+               .requestMatchers("/api/v1/get").hasAnyAuthority("ROLE_USER")
                .anyRequest().authenticated()
                .and()
                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)

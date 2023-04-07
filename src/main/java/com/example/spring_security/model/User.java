@@ -32,7 +32,7 @@ public class User  extends  AbstractModel  implements UserDetails  {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority(roles.name()));
+        return List.of(new SimpleGrantedAuthority("ROLE_"+roles.name()));
     }
 
     @Override
