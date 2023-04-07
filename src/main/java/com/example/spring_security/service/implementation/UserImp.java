@@ -1,5 +1,6 @@
 package com.example.spring_security.service.implementation;
 
+import com.example.spring_security.config.JwtService;
 import com.example.spring_security.dto.AuthenticationResponse;
 
 import com.example.spring_security.model.Roles;
@@ -8,7 +9,7 @@ import com.example.spring_security.repository.UserRepository;
 import com.example.spring_security.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import lombok.var;
+
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -22,7 +23,7 @@ import org.springframework.stereotype.Service;
 public class UserImp  implements UserService {
 
     private final UserRepository userRepository;
-    private  final  JwtService jwtService;
+    private  final JwtService jwtService;
     private  final AuthenticationManager authenticationManager;
 
 
@@ -31,7 +32,7 @@ public class UserImp  implements UserService {
     @Override
     public AuthenticationResponse register(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRoles(Roles.USER);
+        user.setRoles(Roles.ADMIN);
         userRepository.save(user);
         var token=jwtService.generateToken(user);
         log.info("\n,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,serve");
