@@ -1,4 +1,4 @@
-package com.example.spring_security.service.implementation;
+package com.example.spring_security.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -8,7 +8,7 @@ import io.jsonwebtoken.security.Keys;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import java.awt.*;
+
 import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
@@ -54,7 +54,7 @@ public class JwtService {
 
     }
 
-    public String generateToken(Map<String ,Object> extralClaims, UserDetails userDetails){
+    private String generateToken(Map<String ,Object> extralClaims, UserDetails userDetails){
         return Jwts.builder()
                 .setClaims(extralClaims)
                 .setSubject(userDetails.getUsername())
